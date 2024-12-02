@@ -36,6 +36,17 @@ public class Balance {
         return new ResponseEntity<Page<BalanceEntity>>(oBalanceService.getPage(oPageable, filter), HttpStatus.OK);
     }
 
+    @GetMapping("/xtipoapunte/{id_tipoapunte}")
+    public ResponseEntity<Page<BalanceEntity>> getPageXtTpoapunte(
+            Pageable oPageable,
+            @RequestParam  Optional<String> filter,
+            @PathVariable Optional<Long> id_tipoapunte) {
+            ) {
+        return new ResponseEntity<Page<BalanceEntity>>(oBalanceService.getPageXTipoapunte(oPageable, filter,id_tipoapunte), HttpStatus.OK);
+    }
+
+
+
     @GetMapping("/{id}")
     public ResponseEntity<BalanceEntity> getBalance(@PathVariable Long id) {
         return new ResponseEntity<BalanceEntity>(oBalanceService.get(id), HttpStatus.OK);
@@ -70,5 +81,7 @@ public class Balance {
     public ResponseEntity<Long> deleteAll() {
         return new ResponseEntity<Long>(oBalanceService.deleteAll(), HttpStatus.OK);
     }
+
+    
     
 }
